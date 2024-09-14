@@ -166,7 +166,8 @@ public class ModuleManager {
         this.loadModule(new FastLadder());
         this.loadModule(new AutoPot());
         this.loadModule(new BlockESP());
-        this.loadModule(new BlockingGun());
+
+  //      this.loadModule(new BlockingGun());
         this.loadModule(new FireBallJump());
         this.loadModule(NoLiquid.INSTANCE);
         System.out.println("ModuleManager loaded!");

@@ -45,24 +45,24 @@ extends Module {
                 this.chipsCatDropItem = false;
                 this.chipsCatWakeUp = false;
                 this.ateTicks = 0;
-                ChipsCatNoSlow.mc.thePlayer.stopUsingItem();
+                mc.thePlayer.stopUsingItem();
             }
             return;
         }
-        if (ChipsCatNoSlow.mc.thePlayer.isUsingItem()) {
+        if (mc.thePlayer.isUsingItem()) {
             switch (this.mode) {
                 case "Drop": {
-                    if (ChipsCatNoSlow.mc.thePlayer.getHeldItem() == null || !(ChipsCatNoSlow.mc.thePlayer.getHeldItem().getItem() instanceof ItemFood) || ChipsCatNoSlow.mc.thePlayer.getHeldItem().stackSize <= 4) break;
+                    if (mc.thePlayer.getHeldItem() == null || !(mc.thePlayer.getHeldItem().getItem() instanceof ItemFood) || mc.thePlayer.getHeldItem().stackSize <= 4) break;
                     mc.getNetHandler().addToSendQueue(new C07PacketPlayerDigging(C07PacketPlayerDigging.Action.DROP_ITEM, BlockPos.ORIGIN, EnumFacing.DOWN));
                     if (ViaLoadingBase.getInstance().getTargetVersion().isNewerThanOrEqualTo(ProtocolVersion.v1_17)) {
-                        ChipsCatNoSlow.mc.thePlayer.swingItem();
+                        mc.thePlayer.swingItem();
                     }
                     this.chipsCatWakeUp = true;
                     break;
                 }
                 case "VLMode": {
-                    if (ChipsCatNoSlow.mc.thePlayer.getHeldItem() == null || !(ChipsCatNoSlow.mc.thePlayer.getHeldItem().getItem() instanceof ItemFood) || ChipsCatNoSlow.mc.thePlayer.getHeldItem().stackSize <= 4) break;
-                    ChipsCatNoSlow.mc.thePlayer.sendQueue.addToSendQueue(new C08PacketPlayerBlockPlacement(new BlockPos(-1, -1, -1), EnumFacing.EAST.getIndex(), null, 0.0f, 0.0f, 0.0f));
+                    if (mc.thePlayer.getHeldItem() == null || !(mc.thePlayer.getHeldItem().getItem() instanceof ItemFood) || mc.thePlayer.getHeldItem().stackSize <= 4) break;
+                    mc.thePlayer.sendQueue.addToSendQueue(new C08PacketPlayerBlockPlacement(new BlockPos(-1, -1, -1), EnumFacing.EAST.getIndex(), null, 0.0f, 0.0f, 0.0f));
                     this.chipsCatWakeUp = true;
                 }
             }

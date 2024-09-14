@@ -33,6 +33,7 @@ extends Module {
 
     @Override
     public void onUpdate() {
+        // TODO 死循环笑死我了
         int slot = InventoryUtils.findItem(36, 45, ItemAxe.class);
         if (slot != -1 && !this.switchBack) {
             BlinkUtils.blink(new Class[0]);

@@ -220,7 +220,6 @@ extends CFont {
                 x += (double)(currentData[character].width - 8 + this.charOffset);
                 continue;
             }
-            System.out.println(111);
         }
         GL11.glHint(3155, 4352);
         GL11.glPopMatrix();
