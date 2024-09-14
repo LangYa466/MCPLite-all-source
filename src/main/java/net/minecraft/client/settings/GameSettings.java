@@ -1340,7 +1340,7 @@ public class GameSettings
             printwriter.println("incompatibleResourcePacks:" + gson.toJson((Object)this.incompatibleResourcePacks));
             printwriter.println("lastServer:" + this.lastServer);
             printwriter.println("lang:" + this.language);
-            printwriter.println("chatVisibility:" + this.chatVisibility.getChatVisibility());
+            if (this.chatVisibility.getChatVisibility() != 0) printwriter.println("chatVisibility:" + this.chatVisibility.getChatVisibility());
             printwriter.println("chatColors:" + this.chatColours);
             printwriter.println("chatLinks:" + this.chatLinks);
             printwriter.println("chatLinksPrompt:" + this.chatLinksPrompt);
