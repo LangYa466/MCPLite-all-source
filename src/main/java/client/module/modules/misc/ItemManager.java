@@ -162,8 +162,10 @@ extends Module {
             return;
         }
         if (event.getPacket() instanceof C0DPacketCloseWindow) {
-            this.openScreen = null;
-            this.screenContainer = null;
+            if (this.openScreen != null) {
+                this.openScreen = null;
+                this.screenContainer = null;
+            }
         }
     }
 
@@ -209,8 +211,6 @@ extends Module {
             if (!slot.getHasStack()) {
                 if (slot.slotNumber < 45 && slot.slotNumber > 8) {
                     invFull.set(false);
-                } else {
-                    invFull.set(true);
                 }
             }
         });
