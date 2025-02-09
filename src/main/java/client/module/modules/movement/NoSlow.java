@@ -18,7 +18,6 @@ import client.module.modules.misc.ClientSettings;
 import client.module.modules.misc.Gapple;
 import client.utils.PacketUtils;
 import client.utils.PlayerUtils;
-import com.sun.istack.internal.NotNull;
 import net.minecraft.client.settings.GameSettings;
 import net.minecraft.item.ItemBow;
 import net.minecraft.item.ItemEnderPearl;
@@ -30,6 +29,7 @@ import net.minecraft.network.play.client.C08PacketPlayerBlockPlacement;
 import net.minecraft.network.play.client.C09PacketHeldItemChange;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
+import org.jetbrains.annotations.NotNull;
 
 public class NoSlow
 extends Module {
