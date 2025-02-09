@@ -24,6 +24,12 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
+
+import com.viaversion.viarewind.protocol.protocol1_8to1_9.Protocol1_8To1_9;
+import com.viaversion.viarewind.utils.PacketUtil;
+import com.viaversion.viaversion.api.Via;
+import com.viaversion.viaversion.api.protocol.packet.PacketWrapper;
+import com.viaversion.viaversion.api.type.Type;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
@@ -252,10 +258,13 @@ extends Module {
 
     private void startBlocking() {
         if (KillAura.mc.thePlayer.getHeldItem() != null && KillAura.mc.thePlayer.getHeldItem().getItem() instanceof ItemSword) {
-            this.isBlocking = true;
-            KillAura.mc.thePlayer.itemInUseCount = 5;
-            KillAura.mc.thePlayer.sendQueue.addToSendQueue(new C08PacketPlayerBlockPlacement(KillAura.mc.thePlayer.getHeldItem()));
-            KillAura.mc.thePlayer.setItemInUse(KillAura.mc.thePlayer.getHeldItem(), 5);
+            mc.playerController.sendUseItem(mc.thePlayer, mc.theWorld, mc.thePlayer.getHeldItem());
+            PacketWrapper use_0 = PacketWrapper.create(29, null, Via.getManager().getConnectionManager().getConnections().iterator().next());
+            use_0.write(Type.VAR_INT, 0);
+            com.viaversion.viarewind.utils.PacketUtil.sendToServer(use_0, Protocol1_8To1_9.class, true, true);
+            PacketWrapper use_1 = PacketWrapper.create(29, null, Via.getManager().getConnectionManager().getConnections().iterator().next());
+            use_1.write(Type.VAR_INT, 1);
+            PacketUtil.sendToServer(use_1, Protocol1_8To1_9.class, true, true);
         }
     }
 
